@@ -1,26 +1,22 @@
 import { UserModel } from "../database/users/users.model";
 import { connect, disconnect } from '../database/database';
-
 (
     async ()=>{
         connect();
-        const users = [
-            {nome: 'Wallace Lima',
-             nickName:'LDSWallace',
-             dataNascimento: new Date('1999-07-08T03:00:00.000+00:00'),
-             email: 'wallace@gmail.com',
-             senha: 'senhasegura',
-            }
-        ];
-
         try{
-            for(const user of users){
-                await UserModel.create(user);
-                console.log(`Usuario {user.nickname} foi criado`)
-            }
+            const doc = new UserModel({
+              nome: 'Gualberto',
+              email: 'ggualbert@gmail.com',
+              nickName: 'ggualberto',
+              avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRagSzcbWjqohGV4ZtHfduN-h-0jBc1zfp9Zw6lC8F3os46Ddn9h8hC3IwqWsNbcQYAZWk&usqp=CAU',
+              dataNascimento: new Date(),
+              senha: 'sangue bom' 
+            })
+           const teste = await UserModel.createUser(doc);
+           console.log(teste);
             disconnect();
         } catch(e){
             console.error(e);
         }
     }
-) ();
+) (); 
