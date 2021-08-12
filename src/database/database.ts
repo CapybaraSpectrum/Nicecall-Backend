@@ -15,6 +15,7 @@ export const connect = () =>{
     mongoose.connect(uri,mongooseOptions);
 
     database = mongoose.Connection;
+    
 };
 
 export const disconnect = () => {

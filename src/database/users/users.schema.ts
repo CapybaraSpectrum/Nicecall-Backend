@@ -1,5 +1,5 @@
 import { Model, Schema } from "mongoose";
-import { createUser, findMyNick } from "./users.statics";
+import { createUser, deleteUser, getUsers, updateNome, updateUser } from "./users.statics";
 import { iUser } from "./users.types";
 
 export const userSchema = new Schema<iUser, Model<iUser>, iUser>({
@@ -19,5 +19,8 @@ export const userSchema = new Schema<iUser, Model<iUser>, iUser>({
   }
 });
 
-userSchema.statics.findMyNick = findMyNick;
 userSchema.statics.createUser = createUser;
+userSchema.statics.getUsers = getUsers;
+userSchema.statics.updateNome = updateNome; 
+userSchema.statics.deleteUser = deleteUser;
+userSchema.statics.updateUser = updateUser;

@@ -1,5 +1,3 @@
-// import { Model, Document } from "mongoose";
-
 import { Model } from "mongoose";
 
 // export interface IUserDocument extends IUser, Document {
@@ -35,6 +33,12 @@ export interface iUser {
 }
 
 export interface IUserModel extends Model<iUser> {
-    findMyNick(name: string): iUser;
-    createUser(user: {}): iUser;
+    createUser(this: IUserModel, user: {}):  Promise<iUser>;
+    updateNome(this: IUserModel, userId: string, newNome: string);
+
+    getUsers(this: IUserModel): Promise<iUser[]>;
+    teste(this: IUserModel);
+    deleteUser(this: IUserModel, userId: string);
+
+    updateUser(this: IUserModel, userId: string, newInfo: {});
 }
